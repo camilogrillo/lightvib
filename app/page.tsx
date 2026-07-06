@@ -1,3 +1,4 @@
+import Image from "next/image";
 import WaitlistForm from "./components/WaitlistForm";
 
 export default function Home() {
@@ -48,41 +49,22 @@ export default function Home() {
 
         {/* Main headline */}
         <div className="relative z-10 max-w-3xl">
-          {/* Product visual placeholder */}
-          <div className="mx-auto mb-10 animate-float relative" style={{ width: "120px", height: "280px" }}>
-            {/* Device silhouette */}
-            <div
-              className="w-full h-full rounded-full relative overflow-hidden"
-              style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                boxShadow: "0 0 40px rgba(181,16,42,0.25), 0 0 80px rgba(181,16,42,0.1), inset 0 0 30px rgba(181,16,42,0.15)",
-              }}
-            >
-              {/* Inner LED glow */}
-              <div
-                className="absolute inset-4 rounded-full"
-                style={{
-                  background: "radial-gradient(ellipse at center 60%, rgba(224,48,80,0.6) 0%, rgba(181,16,42,0.3) 40%, transparent 70%)",
-                }}
-              />
-              {/* Light dots representing LEDs */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pt-8">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="rounded-full"
-                    style={{
-                      width: i % 2 === 0 ? "6px" : "4px",
-                      height: i % 2 === 0 ? "6px" : "4px",
-                      background: i % 3 === 0 ? "#ff4060" : "#cc2040",
-                      boxShadow: `0 0 6px rgba(255,64,96,0.8), 0 0 12px rgba(181,16,42,0.5)`,
-                      opacity: 0.7 + (i * 0.05),
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+          {/* Product image — close-up of LED channel */}
+          <div
+            className="mx-auto mb-10 animate-float relative overflow-hidden rounded-2xl"
+            style={{
+              width: "280px",
+              height: "320px",
+              boxShadow: "0 0 60px rgba(181,16,42,0.4), 0 0 120px rgba(181,16,42,0.15)",
+            }}
+          >
+            <Image
+              src="/product-closeup.png"
+              alt="LightVib — red light LED array inside transparent silicone"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              priority
+            />
           </div>
 
           <h1 className="font-serif text-5xl md:text-7xl leading-tight mb-6">
@@ -317,41 +299,22 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Visual */}
+            {/* Product image — front view */}
             <div className="flex justify-center">
               <div
-                className="relative rounded-full animate-float"
-                style={{ width: "180px", height: "420px" }}
+                className="relative animate-float overflow-hidden rounded-2xl"
+                style={{
+                  width: "300px",
+                  height: "460px",
+                  boxShadow: "0 0 50px rgba(181,16,42,0.25), 0 0 100px rgba(181,16,42,0.1)",
+                }}
               >
-                <div
-                  className="w-full h-full rounded-full"
-                  style={{
-                    background: "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    boxShadow: "0 0 60px rgba(181,16,42,0.3), 0 0 120px rgba(181,16,42,0.12), inset 0 0 50px rgba(181,16,42,0.2)",
-                  }}
-                >
-                  {/* LED array */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 pt-16">
-                    {[...Array(8)].map((_, i) => (
-                      <div key={i} className="flex gap-2">
-                        {[...Array(i % 2 === 0 ? 3 : 2)].map((_, j) => (
-                          <div
-                            key={j}
-                            className="rounded-full"
-                            style={{
-                              width: "5px",
-                              height: "5px",
-                              background: i % 3 === 0 ? "#ff4060" : "#cc2040",
-                              boxShadow: "0 0 8px rgba(255,64,96,0.9)",
-                              opacity: 0.6 + (i * 0.04),
-                            }}
-                          />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Image
+                  src="/product-front.png"
+                  alt="LightVib device — front view with LED array illuminated"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center" }}
+                />
               </div>
             </div>
 
