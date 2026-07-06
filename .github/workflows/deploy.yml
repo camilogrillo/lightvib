@@ -1,4 +1,4 @@
-name: Deploy to Vercel
+name: Deploy to VPS
 
 on:
   push:
@@ -8,10 +8,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        run: npx vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_gbkCwnpsKnkbuQJ9YLu14AkQ
-          VERCEL_PROJECT_ID: prj_CBtScQ9fQXH6JL3EBgQO5jgEbo2T
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 178.105.193.124
+          port: 3243
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/lightvib
+            git pull origin main
+            npm ci
+            npm run build
+            cp -r public .next/standalone/
+            cp -r .next/static .next/standalone/.next/
+            pm2 reload lightvib || pm2 start ecosystem.config.js
