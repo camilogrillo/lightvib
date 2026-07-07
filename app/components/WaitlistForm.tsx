@@ -133,8 +133,12 @@ export default function WaitlistForm() {
   };
 
   if (submitted) {
+    const shareText = encodeURIComponent("I just joined the waitlist for LightVib — a red light therapy device for intimate wellness and vaginal rejuvenation. Worth checking out:");
+    const shareUrl = encodeURIComponent("https://lightvib.com");
+    const emailBody = encodeURIComponent(`Hi,\n\nI found something you might find interesting. LightVib is a red light therapy device designed for intimate wellness — for postpartum recovery, vaginal rejuvenation, or cancer-related healing.\n\nThey're launching on Kickstarter soon and early supporters get the best pricing.\n\nCheck it out: https://lightvib.com\n`);
+
     return (
-      <div className="text-center py-12 animate-fade-in-up">
+      <div className="text-center py-8 animate-fade-in-up">
         <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
           style={{ background: "linear-gradient(135deg, #b5102a, #c47a8a)" }}>
           <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,10 +148,59 @@ export default function WaitlistForm() {
         <h3 className="font-serif text-2xl mb-3" style={{ color: "#f5ede8" }}>
           You&apos;re on the list.
         </h3>
-        <p style={{ color: "#7a6068" }} className="text-sm leading-relaxed">
+        <p style={{ color: "#7a6068" }} className="text-sm leading-relaxed mb-8">
           We&apos;ll reach out to {form.email} when LightVib launches.<br />
           Early supporters get priority access and the best pricing.
         </p>
+
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }} className="pt-8">
+          <p className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: "#7a6068" }}>
+            Know someone who could benefit?
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href={`https://api.whatsapp.com/send?text=${shareText}%20https%3A%2F%2Flightvib.com`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("share_click", { method: "whatsapp" })}
+              className="inline-block text-white text-xs font-semibold px-5 py-3 rounded-lg"
+              style={{ background: "#25D366" }}
+            >
+              WhatsApp
+            </a>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("share_click", { method: "facebook" })}
+              className="inline-block text-white text-xs font-semibold px-5 py-3 rounded-lg"
+              style={{ background: "#1877F2" }}
+            >
+              Facebook
+            </a>
+            <a
+              href={`mailto:?subject=This%20might%20interest%20you%20%E2%80%94%20LightVib&body=${emailBody}`}
+              onClick={() => trackEvent("share_click", { method: "email" })}
+              className="inline-block text-white text-xs font-semibold px-5 py-3 rounded-lg"
+              style={{ background: "#b5102a" }}
+            >
+              Email
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("share_click", { method: "twitter" })}
+              className="inline-block text-white text-xs font-semibold px-5 py-3 rounded-lg"
+              style={{ background: "#000000" }}
+            >
+              X / Twitter
+            </a>
+          </div>
+          <p className="text-xs mt-4" style={{ color: "rgba(122,96,104,0.6)" }}>
+            Or share this link: <a href="https://lightvib.com" style={{ color: "#c47a8a" }}>lightvib.com</a>
+          </p>
+        </div>
       </div>
     );
   }
