@@ -1,6 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+function trackEvent(eventName: string, params?: Record<string, unknown>) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", eventName, params);
+  }
+}
 
 type Segment =
   | "postpartum"
@@ -49,6 +61,13 @@ export default function WaitlistForm() {
     email: "",
   });
 
+  useEffect(() => {
+    trackEvent("form_step_view", {
+      event_category: "waitlist_form",
+      step_number: 1,
+    });
+  }, []);
+
   const progress = ((step - 1) / TOTAL_STEPS) * 100;
 
   const canAdvance = () => {
@@ -62,7 +81,19 @@ export default function WaitlistForm() {
   };
 
   const next = () => {
-    if (canAdvance() && step < TOTAL_STEPS) setStep(step + 1);
+    if (canAdvance() && step < TOTAL_STEPS) {
+      const nextStep = step + 1;
+      setStep(nextStep);
+      trackEvent("form_step_complete", {
+        event_category: "waitlist_form",
+        step_number: step,
+        step_name: ["segment", "concern", "treatments", "science", "price_intent", "contact"][step - 1],
+      });
+      trackEvent("form_step_view", {
+        event_category: "waitlist_form",
+        step_number: nextStep,
+      });
+    }
   };
 
   const back = () => {
@@ -80,8 +111,22 @@ export default function WaitlistForm() {
       });
       if (!res.ok) throw new Error("Something went wrong");
       setSubmitted(true);
+      trackEvent("form_submit", {
+        event_category: "waitlist_form",
+        segment: form.segment,
+        concern: form.concern,
+        price_intent: form.priceIntent,
+        science_importance: form.scienceImportance,
+      });
+      trackEvent("generate_lead", {
+        event_category: "waitlist_form",
+      });
     } catch {
       setError("Something went wrong. Please try again.");
+      trackEvent("form_error", {
+        event_category: "waitlist_form",
+        step_number: 6,
+      });
     } finally {
       setLoading(false);
     }
