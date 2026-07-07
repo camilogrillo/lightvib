@@ -1,7 +1,7 @@
 import Image from "next/image";
 import WaitlistForm from "./components/WaitlistForm";
 
-const jsonLd = {
+const jsonLdProduct = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "LightVib",
@@ -24,12 +24,83 @@ const jsonLd = {
   },
 };
 
+const jsonLdOrganization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "LightVib",
+  url: "https://lightvib.com",
+  logo: "https://lightvib.com/product-closeup.png",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hello@lightvib.com",
+    contactType: "customer support",
+  },
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=61591668155230",
+    "https://www.instagram.com/lightvib.official",
+  ],
+};
+
+const faqItems = [
+  {
+    question: "What is red light therapy for vaginal rejuvenation?",
+    answer:
+      "Red light therapy (photobiomodulation) uses specific wavelengths of light — typically 660nm — to stimulate collagen production, improve blood circulation, and accelerate tissue repair in vaginal and pelvic tissues. It is non-hormonal, non-invasive, and backed by 40+ years of clinical research.",
+  },
+  {
+    question: "Is LightVib safe for cancer survivors?",
+    answer:
+      "LightVib is hormone-free and drug-free, making it suitable for women who cannot use hormonal treatments due to hormone-sensitive cancers. It uses red light and near-infrared therapy only. Always consult your oncologist before starting any new wellness device.",
+  },
+  {
+    question: "How does LightVib help with postpartum recovery?",
+    answer:
+      "After childbirth, pelvic and vaginal tissues often need support to heal and regain elasticity and sensation. LightVib's 660nm red light stimulates cellular repair and collagen synthesis, while 850nm near-infrared light penetrates deeper to support muscle and mucosal tissue recovery.",
+  },
+  {
+    question: "Is red light therapy safe for intimate use?",
+    answer:
+      "Yes. Red light and near-infrared therapy are well-studied modalities used in clinical settings for wound healing, pain relief, and tissue regeneration. LightVib uses body-safe, medical-grade materials and does not emit heat or UV radiation.",
+  },
+  {
+    question: "When will LightVib be available?",
+    answer:
+      "LightVib is launching on Kickstarter. Join the waitlist at lightvib.com to get first access and exclusive early-bird pricing before the public launch.",
+  },
+  {
+    question: "What is the difference between 660nm and 850nm light therapy?",
+    answer:
+      "660nm red light works at the surface level — stimulating collagen, reducing inflammation, and accelerating tissue repair. 850nm near-infrared light penetrates deeper tissue layers, energizing mitochondria (ATP production), supporting nerve regeneration, and promoting deeper healing.",
+  },
+];
+
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
 
       <main>
@@ -398,6 +469,54 @@ export default function Home() {
             <p className="text-center text-xs mt-6" style={{ color: "#7a6068" }}>
               Launching on Kickstarter &middot; lightvib.com
             </p>
+          </div>
+        </section>
+
+        {/* ───────────── FAQ ───────────── */}
+        <section
+          id="faq"
+          aria-label="Frequently asked questions about LightVib red light therapy"
+          className="py-24 px-6"
+          style={{ background: "#09060a" }}
+        >
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ color: "#7a6068" }}>
+                FAQ
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl" style={{ color: "#f5ede8" }}>
+                Common questions.
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqItems.map((item) => (
+                <details
+                  key={item.question}
+                  className="card-glass rounded-2xl group"
+                  style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  <summary
+                    className="cursor-pointer px-6 py-5 flex items-center justify-between gap-4 list-none"
+                    style={{ color: "#f5ede8" }}
+                  >
+                    <h3 className="font-serif text-base md:text-lg font-normal">{item.question}</h3>
+                    <span
+                      className="flex-shrink-0 text-lg transition-transform group-open:rotate-45"
+                      style={{ color: "#b5102a" }}
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p
+                    className="px-6 pb-5 text-sm leading-relaxed"
+                    style={{ color: "rgba(196,122,138,0.75)" }}
+                  >
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
