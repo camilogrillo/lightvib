@@ -420,9 +420,14 @@ export default function Home() {
               LightVib is a wellness device. Not intended to diagnose, treat, or cure any medical condition.<br />
               Consult your healthcare provider before use.
             </p>
-            <p className="text-xs" style={{ color: "#7a6068" }}>
-              &copy; {new Date().getFullYear()} LightVib
-            </p>
+            <div className="flex flex-col items-end gap-1">
+              <a href="mailto:hello@lightvib.com" className="text-xs" style={{ color: "rgba(196,122,138,0.5)" }}>
+                hello@lightvib.com
+              </a>
+              <p className="text-xs" style={{ color: "#7a6068" }}>
+                &copy; {new Date().getFullYear()} LightVib
+              </p>
+            </div>
           </div>
         </footer>
       </main>
