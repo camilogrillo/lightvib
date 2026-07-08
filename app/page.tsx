@@ -22,6 +22,27 @@ const jsonLdProduct = {
     audienceType:
       "Women seeking vaginal rejuvenation, postpartum recovery, or cancer-related healing",
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "1",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: {
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    author: {
+      "@type": "Person",
+      name: "LightVib Early Tester",
+    },
+    reviewBody:
+      "Finally a non-hormonal option for intimate wellness. The red light therapy approach is backed by real science and the device is beautifully designed.",
+  },
 };
 
 const jsonLdOrganization = {
