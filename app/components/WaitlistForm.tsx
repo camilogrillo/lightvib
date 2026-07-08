@@ -135,7 +135,7 @@ export default function WaitlistForm() {
   if (submitted) {
     const shareText = encodeURIComponent("I just joined the waitlist for LightVib — a red light therapy device for intimate wellness and vaginal rejuvenation. Worth checking out:");
     const shareUrl = encodeURIComponent("https://lightvib.com");
-    const emailBody = encodeURIComponent(`Hi,\n\nI found something you might find interesting. LightVib is a red light therapy device designed for intimate wellness — for postpartum recovery, vaginal rejuvenation, or cancer-related healing.\n\nThey're launching on Kickstarter soon and early supporters get the best pricing.\n\nCheck it out: https://lightvib.com\n`);
+    const emailBody = encodeURIComponent(`Hi,\n\nI found something you might find interesting. LightVib is a red light therapy device designed for intimate wellness — for postpartum recovery, vaginal rejuvenation, or cancer-related healing.\n\nThey're launching on Indiegogo soon and early supporters get the best pricing.\n\nCheck it out: https://lightvib.com\n`);
 
     return (
       <div className="text-center py-8 animate-fade-in-up">

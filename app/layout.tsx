@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "LightVib | Red Light Therapy for Vaginal Rejuvenation",
     description:
-      "The first intimate wellness device powered by red light and near-infrared therapy. Non-hormonal. Launching on Kickstarter.",
+      "The first intimate wellness device powered by red light and near-infrared therapy. Non-hormonal. Launching on Indiegogo.",
     images: ["https://lightvib.com/product-closeup.png"],
   },
   alternates: {

@@ -86,7 +86,7 @@ const faqItems = [
   {
     question: "When will LightVib be available?",
     answer:
-      "LightVib is launching on Kickstarter. Join the waitlist at lightvib.com to get first access and exclusive early-bird pricing before the public launch.",
+      "LightVib is launching on Indiegogo. Join the waitlist at lightvib.com to get first access and exclusive early-bird pricing before the public launch.",
   },
   {
     question: "What is the difference between 660nm and 850nm light therapy?",
@@ -214,7 +214,7 @@ export default function Home() {
             </div>
 
             <p className="text-xs mt-6" style={{ color: "#7a6068" }}>
-              Launching on Kickstarter &middot; Early supporters get first access & best pricing
+              Launching on Indiegogo &middot; Early supporters get first access & best pricing
             </p>
           </div>
 
@@ -479,7 +479,7 @@ export default function Home() {
               </h2>
               <p className="text-base" style={{ color: "rgba(196,122,138,0.7)" }}>
                 Answer 5 quick questions, then leave your email.<br />
-                Early supporters get first access and Kickstarter-exclusive pricing.
+                Early supporters get first access and Indiegogo-exclusive pricing.
               </p>
             </div>
 
@@ -488,7 +488,7 @@ export default function Home() {
             </div>
 
             <p className="text-center text-xs mt-6" style={{ color: "#7a6068" }}>
-              Launching on Kickstarter &middot; lightvib.com
+              Launching on Indiegogo &middot; lightvib.com
             </p>
           </div>
         </section>
