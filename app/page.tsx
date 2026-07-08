@@ -376,14 +376,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { stat: "40+", label: "Years of photobiomodulation research" },
                 { stat: "Non-hormonal", label: "Safe for hormone-sensitive conditions" },
                 { stat: "Non-invasive", label: "No drugs, no needles, no heat" },
               ].map((item) => (
-                <div key={item.stat} className="text-center p-6 card-glass rounded-xl">
-                  <div className="font-serif text-2xl mb-1 gradient-text">{item.stat}</div>
+                <div key={item.stat} className="text-center p-5 card-glass rounded-xl">
+                  <div className="font-serif text-xl mb-1 gradient-text">{item.stat}</div>
                   <div className="text-xs" style={{ color: "#7a6068" }}>{item.label}</div>
                 </div>
               ))}
