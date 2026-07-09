@@ -175,8 +175,10 @@ export default function Home() {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 aria-label="LightVib red light therapy device — intimate wellness device with red light LED array"
+                ref={(el) => { if (el) { el.muted = true; el.play().catch(() => {}); } }}
               />
             </div>
 
