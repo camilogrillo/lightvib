@@ -162,19 +162,21 @@ export default function Home() {
           <div className="relative z-10 max-w-3xl">
             {/* Product image */}
             <div
-              className="mx-auto mb-10 animate-float relative overflow-hidden rounded-2xl"
+              className="mx-auto mb-10 relative overflow-hidden rounded-2xl"
               style={{
                 width: "280px",
-                height: "320px",
+                height: "497px",
                 boxShadow: "0 0 60px rgba(181,16,42,0.4), 0 0 120px rgba(181,16,42,0.15)",
               }}
             >
-              <Image
-                src="/product-closeup.png"
-                alt="LightVib red light therapy device — internal LED array visible through transparent silicone for vaginal rejuvenation"
-                fill
-                style={{ objectFit: "cover", objectPosition: "center top" }}
-                priority
+              <video
+                src="/reel.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                aria-label="LightVib red light therapy device — intimate wellness device with red light LED array"
               />
             </div>
 
