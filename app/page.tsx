@@ -410,7 +410,7 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    src="/product-front.png"
+                    src="/krea-front-glow.png"
                     alt="LightVib intimate wellness device — transparent silicone with red light LED array for vaginal rejuvenation and postpartum recovery"
                     fill
                     style={{ objectFit: "cover", objectPosition: "center" }}
@@ -453,6 +453,41 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ───────────── LIFESTYLE GALLERY ───────────── */}
+        <section className="py-16 px-6" style={{ background: "#080508" }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "#7a6068" }}>
+                Real life
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl" style={{ color: "#f5ede8" }}>
+                Designed for <span className="italic" style={{ color: "#c47a8a" }}>your routine.</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { src: "/krea-woman-eyes-closed.png", alt: "Woman using LightVib red light therapy device for intimate wellness" },
+                { src: "/krea-box-product.png", alt: "LightVib device with luxury packaging" },
+                { src: "/krea-woman-candles.png", alt: "Woman experiencing intimate wellness red light therapy" },
+                { src: "/krea-side-dramatic.png", alt: "LightVib device red light glow close-up" },
+              ].map((img) => (
+                <div
+                  key={img.src}
+                  className="relative overflow-hidden rounded-xl"
+                  style={{ aspectRatio: "3/4" }}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
