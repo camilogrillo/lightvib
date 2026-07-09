@@ -1,5 +1,6 @@
 import Image from "next/image";
 import WaitlistForm from "./components/WaitlistForm";
+import HeroVideo from "./components/HeroVideo";
 
 const jsonLdProduct = {
   "@context": "https://schema.org",
@@ -169,17 +170,7 @@ export default function Home() {
                 boxShadow: "0 0 60px rgba(181,16,42,0.4), 0 0 120px rgba(181,16,42,0.15)",
               }}
             >
-              <video
-                src="/reel.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                aria-label="LightVib red light therapy device — intimate wellness device with red light LED array"
-                ref={(el) => { if (el) { el.muted = true; el.play().catch(() => {}); } }}
-              />
+              <HeroVideo />
             </div>
 
             <h1 className="font-serif text-5xl md:text-7xl leading-tight mb-6">
