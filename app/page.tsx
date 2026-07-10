@@ -10,7 +10,13 @@ const jsonLdProduct = {
     "LightVib is an intimate wellness device combining red light (660nm) and near-infrared (850nm) therapy for vaginal rejuvenation, postpartum recovery, and cancer-related healing. Non-hormonal, non-invasive, and clinically inspired.",
   brand: { "@type": "Brand", name: "LightVib" },
   url: "https://lightvib.com",
-  image: "https://lightvib.com/product-closeup.png",
+  image: [
+    "https://lightvib.com/product-closeup.png",
+    "https://lightvib.com/krea-glow-hands-neck.png",
+    "https://lightvib.com/krea-glow-face-warm.png",
+    "https://lightvib.com/krea-glow-profile.png",
+    "https://lightvib.com/krea-front-glow.png",
+  ],
   offers: {
     "@type": "Offer",
     availability: "https://schema.org/PreOrder",
@@ -458,7 +464,11 @@ export default function Home() {
         </section>
 
         {/* ───────────── LIFESTYLE GALLERY ───────────── */}
-        <section className="py-16 px-6" style={{ background: "#080508" }}>
+        <section
+          aria-label="Red light therapy for women — LightVib intimate wellness lifestyle"
+          className="py-16 px-6"
+          style={{ background: "#080508" }}
+        >
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "#7a6068" }}>
@@ -470,10 +480,22 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
-                { src: "/krea-glow-hands-neck.png", alt: "Woman with red light therapy glow for intimate wellness and vaginal rejuvenation" },
-                { src: "/krea-glow-face-warm.png", alt: "Woman experiencing red light photobiomodulation therapy — warm healing glow" },
-                { src: "/krea-glow-profile.png", alt: "Woman in red light therapy session — LightVib intimate wellness" },
-                { src: "/krea-box-product.png", alt: "LightVib device with luxury packaging" },
+                {
+                  src: "/krea-glow-hands-neck.png",
+                  alt: "Woman with red light therapy glow on face — LightVib 660nm photobiomodulation for vaginal rejuvenation and intimate wellness",
+                },
+                {
+                  src: "/krea-glow-face-warm.png",
+                  alt: "Woman experiencing red light photobiomodulation therapy — warm healing glow for postpartum recovery and intimate wellness",
+                },
+                {
+                  src: "/krea-glow-profile.png",
+                  alt: "Woman in red light therapy session — LightVib non-hormonal intimate wellness for vaginal rejuvenation and postpartum healing",
+                },
+                {
+                  src: "/krea-box-product.png",
+                  alt: "LightVib red light therapy device with luxury packaging — 660nm and 850nm intimate wellness device",
+                },
               ].map((img) => (
                 <div
                   key={img.src}
@@ -484,6 +506,7 @@ export default function Home() {
                     src={img.src}
                     alt={img.alt}
                     fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
                     style={{ objectFit: "cover" }}
                   />
                 </div>
