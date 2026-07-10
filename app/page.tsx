@@ -470,10 +470,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
-                { src: "/krea-woman-eyes-closed.png", alt: "Woman using LightVib red light therapy device for intimate wellness" },
+                { src: "/krea-glow-hands-neck.png", alt: "Woman with red light therapy glow for intimate wellness and vaginal rejuvenation" },
+                { src: "/krea-glow-face-warm.png", alt: "Woman experiencing red light photobiomodulation therapy — warm healing glow" },
+                { src: "/krea-glow-profile.png", alt: "Woman in red light therapy session — LightVib intimate wellness" },
                 { src: "/krea-box-product.png", alt: "LightVib device with luxury packaging" },
-                { src: "/krea-woman-candles.png", alt: "Woman experiencing intimate wellness red light therapy" },
-                { src: "/krea-side-dramatic.png", alt: "LightVib device red light glow close-up" },
               ].map((img) => (
                 <div
                   key={img.src}
